@@ -4,9 +4,11 @@ RUN npm install -g nodemon
 
 WORKDIR /app
 
-COPY package.json .
+COPY package*.json ./
 
 RUN npm ci --include=dev
+
+COPY . .
 
 EXPOSE 4000
 
