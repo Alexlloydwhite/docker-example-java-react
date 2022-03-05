@@ -4,11 +4,9 @@ RUN npm install -g nodemon
 
 WORKDIR /app
 
-COPY package.json .
-
-RUN npm install
-
 COPY . .
+
+RUN npm ci
 
 EXPOSE 4000
 
