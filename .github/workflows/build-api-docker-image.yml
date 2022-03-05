@@ -43,9 +43,8 @@ jobs:
           npm ci 
 
       # build and test the apps     
-      - name: build
+      - name: test
         run: |
-          npm run build
           npm run test
 
   push_to_Docker_Hub:
