@@ -9,7 +9,7 @@ RUN npm install -g nodemon
 WORKDIR /app
 
 # Copy our app into an app folder on the image
-COPY . .
+COPY package.json .
 
 # Install dependencies while image is being built
 RUN npm install
