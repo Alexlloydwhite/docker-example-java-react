@@ -15,4 +15,4 @@ RUN npm install --force
 EXPOSE 4000
 
 # After image is built, run the build
-CMD ["node", "app.js"]
+CMD ["node", "server.js"]
