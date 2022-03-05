@@ -69,23 +69,8 @@ jobs:
         with:
           username: ${{ secrets.DOCKER_HUB_USERNAME }}
           password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
-      
-      - name: Build and push
-        uses: docker/build-push-action@v2
-        with:
-          context: .
-          file: ./docker-compose.yaml
-          push: true
-          tags: ${{ secrets.DOCKER_HUB_USERNAME }}/docker-example-node-react:latest
 
-      # - name: Build the stack
-      #   run: docker-compose up -d
-      # - name: Test
-      #   run: docker run --network container:api_c appropriate/curl -s --retry 10 --retry-connrefused http://localhost:4000/
-          
-      - name: Run the image in a container
-        uses: addnab/docker-run-action@v3
-        with:
-          image: ${{ secrets.DOCKER_HUB_USERNAME }}/docker-example-node-react:latest
-          run: |
-            echo "runing the docker image"
+      - name: Build the stack
+        run: docker-compose up -d
+      - name: Test
+        run: docker run --network container:api_c appropriate/curl -s --retry 10 --retry-connrefused http://localhost:4000/     
