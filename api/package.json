@@ -1,10 +1,11 @@
 {
   "name": "docker",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "Simple REST API",
+  "main": "server.js",
   "scripts": {
-    "test": "jest app.test.js"
+    "test": "jest app.test.js",
+    "dev": "nodemon sever.js"
   },
   "keywords": [],
   "author": "",
