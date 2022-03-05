@@ -1,14 +1,16 @@
-FROM node:17-alpine
+FROM node:16.14.0-alpine
 
 RUN npm install -g nodemon
 
 WORKDIR /app
 
-COPY package*.json ./
-
-RUN npm ci --include=dev
-
 COPY . .
+
+RUN npm install
+
+RUN npm ci --only=production
+
+COPY . /app
 
 EXPOSE 4000
 
