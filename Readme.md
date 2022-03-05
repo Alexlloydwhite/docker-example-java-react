@@ -1,12 +1,12 @@
 # TODO
-[x] - Build, test, containerize API
-[ ] - Build, test containerize frontend
- - [ ] Configure docker image 
- - [ ] Frontend calls API to get message
- - [ ] Display message on UI
-[ ] - Setup Github Actions
- - [ ] PR into main builds both docker images
- - [ ] PR into main runs all tests
+- [x] Build, test, containerize API
+- [ ] Build, test containerize frontend
+    - [ ] Configure docker image 
+    - [ ] Frontend calls API to get message
+    - [ ] Display message on UI
+- [ ] Setup Github Actions
+    - [ ] PR into main builds both docker images
+    - [ ] PR into main runs all tests
 
 # Containers
 A predictable, consistent, and reliable environment.
