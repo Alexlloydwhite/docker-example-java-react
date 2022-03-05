@@ -8,3 +8,11 @@ services:
     volumes:
       - ./api:/app
       - /app/node_modules
+  frontend:
+    build: ./frontend
+    container_name: frontend_c
+    ports:
+      - '3000:3000'
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
