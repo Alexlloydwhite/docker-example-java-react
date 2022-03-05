@@ -9,7 +9,7 @@ WORKDIR /app
 COPY . .
 
 # Install dependencies while image is being built
-RUN npm install 
+RUN npm install --force
 
 # Specifiy the port to expose
 EXPOSE 4000
