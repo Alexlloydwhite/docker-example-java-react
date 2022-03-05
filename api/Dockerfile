@@ -4,7 +4,7 @@ RUN npm install -g nodemon
 
 WORKDIR /app
 
-COPY . .
+COPY ./api .
 
 RUN npm install
 
