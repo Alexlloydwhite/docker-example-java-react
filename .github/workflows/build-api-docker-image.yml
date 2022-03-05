@@ -74,6 +74,7 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           context: .
+          file: ./docker-compose.yaml
           push: true
           tags: ${{ secrets.DOCKER_HUB_USERNAME }}/docker-example-node-react:latest
 
