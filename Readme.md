@@ -1,3 +1,10 @@
+# Hello World App
+This is a Hello World app built with Java / Micronaut, Javascript / React, Docker, and Github Actions. 
+
+## Future Enhancements
+- Github Actions deploys to AWS
+- Create a database to store the docker message
+
 # Containers
 A predictable, consistent, and reliable environment.
 
