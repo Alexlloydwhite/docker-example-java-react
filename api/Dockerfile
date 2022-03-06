@@ -1,17 +1,4 @@
-FROM node:16.14.0-alpine
-
-RUN npm install -g nodemon
-
-WORKDIR /app
-
-COPY . .
-
-RUN npm install
-
-RUN npm ci --only=production
-
-COPY . /app
-
-EXPOSE 4000
-
-CMD ["npm", "run", "dev"]
+FROM azul/zulu-openjdk:11.0.10
+COPY ./target/docker-app-0.1.jar .
+EXPOSE 8080
+CMD [ "java", "-jar", "docker-app-0.1.jar"]
