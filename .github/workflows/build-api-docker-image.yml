@@ -83,7 +83,7 @@ jobs:
     runs-on: ubuntu-latest
     # build docker image and push to docker hub
     # only if the app build and test successfully
-    needs: [build_test_api]
+    needs: [build_test_api, build_test_frontend]
 
     steps:
       - name: checkout repo
