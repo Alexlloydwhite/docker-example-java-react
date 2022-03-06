@@ -1,9 +1,9 @@
 # TODO
 - [x] Build, test, containerize API
-- [ ] Build, test containerize frontend
-    - [ ] Configure docker image 
-    - [ ] Frontend calls API to get message
-    - [ ] Display message on UI
+- [x] Build, test containerize frontend
+    - [x] Configure docker image 
+    - [x] Frontend calls API to get message
+    - [x] Display message on UI
 - [ ] Setup Github Actions
     - [ ] PR into main builds both docker images
     - [ ] PR into main runs all tests

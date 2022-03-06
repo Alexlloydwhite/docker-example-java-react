@@ -4,8 +4,8 @@ const cors = require("cors");
 const app = express();
 app.use(cors());
 
-app.get("/", (req, res) => {
-  res.send('Hello from docker!');
+app.get("/getDockerMessage", (req, res) => {
+  res.json({ dockerMessage: "Hello from docker!" });
 });
 
 module.exports = app;

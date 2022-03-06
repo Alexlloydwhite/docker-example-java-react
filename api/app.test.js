@@ -4,10 +4,12 @@ const app = require("./app");
 describe("App", () => {
   test("Returns Docker Message", async () => {
     // WHEN
-    const response = await request(app).get("/");
-    
+    const response = await request(app).get("/getDockerMessage");
+
     // THEN
     expect(response.statusCode).toBe(200);
-    expect(response.text).toBe("Hello from docker!");
+    expect(response.body).toStrictEqual({
+      dockerMessage: "Hello from docker!",
+    });
   });
 });
