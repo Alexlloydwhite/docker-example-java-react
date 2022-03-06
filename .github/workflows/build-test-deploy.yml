@@ -1,20 +1,10 @@
-# This is a basic workflow to help you get started with Actions
-
 name: CI
-
-# Controls when the workflow will run
 on:
-  # Triggers the workflow on push or pull request events but only for the main branch
   push:
     branches: [ main ]
-
-  # Allows you to run this workflow manually from the Actions tab
-  workflow_dispatch:
-
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   build_test_api:
-    # The type of runner that the job will run on
+    name: Building and Testing API
     runs-on: ubuntu-latest
     defaults:
       run:
@@ -22,30 +12,24 @@ jobs:
     strategy:
       matrix:
         node-version: [16.x]
-
-    # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
-
-      - name: setup node
+      - name: Setup Node
         uses: actions/setup-node@master
         with:
           node-version: ${{ matrix.node-version }}
 
-      # install application dependencies
-      - name: Install dependencies
+      - name: Install Dependencies
         run: |
           npm install
-          npm ci 
+          npm ci  
 
-      # build and test the apps     
-      - name: test
+      - name: Run Unit Tests
         run: |
           npm run test
 
   build_test_frontend:
-    # The type of runner that the job will run on
+    name: Building and Testing Frontend
     runs-on: ubuntu-latest
     defaults:
       run:
@@ -53,34 +37,25 @@ jobs:
     strategy:
       matrix:
         node-version: [16.x]
-
-    # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
-
       - name: setup node
         uses: actions/setup-node@master
         with:
           node-version: ${{ matrix.node-version }}
 
-      # install application dependencies
       - name: Install dependencies
         run: |
           npm install
-          npm ci 
+          npm ci    
 
-      # build and test the apps     
-      - name: test
+      - name: Run Unit Test - Build Application
         run: |
           npm run test
           npm run build
 
   push_to_Docker_Hub:
-    # The type of runner that the job will run on
     runs-on: ubuntu-latest
-    # build docker image and push to docker hub
-    # only if the app build and test successfully
     needs: [build_test_api, build_test_frontend]
 
     steps:
@@ -89,7 +64,7 @@ jobs:
 
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v1
-      
+
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v1
 
@@ -99,7 +74,8 @@ jobs:
           username: ${{ secrets.DOCKER_HUB_USERNAME }}
           password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
 
-      - name: Build the stack
+      - name: Build The Stack
         run: docker-compose up -d
-      - name: Test
+
+      - name: Test The Stack
         run: docker run --network container:api_c appropriate/curl -s --retry 10 --retry-connrefused http://localhost:4000/     
