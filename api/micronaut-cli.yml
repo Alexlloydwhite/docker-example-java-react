@@ -1,0 +1,6 @@
+applicationType: default
+defaultPackage: com.dockerapp
+testFramework: spock
+sourceLanguage: java
+buildTool: maven
+features: [annotation-api, app-name, http-client, jackson-databind, java, java-application, logback, maven, netty-server, readme, shade, spock, yaml]
