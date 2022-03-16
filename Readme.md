@@ -1,5 +1,6 @@
-# Hello World App
-This is a Hello World app built with Java / Micronaut, Javascript / React, Docker, and Github Actions. 
+# Hello World
+This is a Hello World app. The backend is Java / Micronaut and the frontend is TypeScript / React.<br/>
+It is fully tested (Jest / Spock) and containeried with Docker. There is a Gitbub Actions workflow to run tests and deploy to Dockerhub. 
 
 ## Future Enhancements
 - Github Actions deploys to AWS
