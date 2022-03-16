@@ -9,24 +9,26 @@ jobs:
     defaults:
       run:
         working-directory: ./api
-    strategy:
-      matrix:
-        node-version: [16.x]
     steps:
-      - uses: actions/checkout@v2
-      - name: Setup Node
-        uses: actions/setup-node@master
+      - name: 'Checkout'
+        uses: actions/checkout@v2
+
+      - name: 'Setup Java'
+        uses: actions/setup-java@v1
         with:
-          node-version: ${{ matrix.node-version }}
+          java-version: 16
 
-      - name: Install Dependencies
+      - name: 'Check Java Version'
         run: |
-          npm install
-          npm ci  
+          java --version
 
-      - name: Run Unit Tests
+      - name: 'Compile'
         run: |
-          npm run test
+          mvn compile
+
+      - name: 'Run Tests'
+        run: |
+          mvn test
 
   build_test_frontend:
     name: Building and Testing Frontend
@@ -44,14 +46,17 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
 
-      - name: Install dependencies
+      - name: 'Install dependencies'
         run: |
           npm install
           npm ci    
 
-      - name: Run Unit Test - Build Application
+      - name: 'Run Unit Tests'
         run: |
           npm run test
+
+      - name: 'Build App'
+        run: |
           npm run build
 
   push_to_Docker_Hub:
